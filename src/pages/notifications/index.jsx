@@ -1,6 +1,6 @@
 function Notifications(){
     return(
-        <div>
+        <div className="bg-red-600">
             notifications component
         </div>
     )
