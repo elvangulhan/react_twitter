@@ -1,3 +1,7 @@
+import store from "~/store";
+
+const states = store.getState();
+
 export const mainMenu = [
     {
         path: '/',
@@ -81,7 +85,7 @@ export const mainMenu = [
         }
     },
     {
-        path: '/lists',
+        path: '/bookmarks',
         title: 'Yer İşaretleri',
         icon: {
             active: (
@@ -107,13 +111,15 @@ export const mainMenu = [
             ),
             passive: (
                 <svg viewBox="0 0 24 24" width={26.25} height={26.25}>
-                    <path fill="#fff" d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z" />
+                    <path fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
             )
         }
     },
     {
-        path: '/profile',
+        path: () => {
+            return `/${store.getState().auth?.currentAccount?.username}`
+        },
         title: 'Profil',
         icon: {
             active: (
